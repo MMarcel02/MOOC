@@ -1,1 +1,1 @@
-# MOOC
+This repo is a store of exercises I did while learning Java following the course at Mooc.fi
