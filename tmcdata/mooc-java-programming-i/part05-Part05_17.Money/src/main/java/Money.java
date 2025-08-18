@@ -5,14 +5,16 @@ public class Money {
     private final int cents;
 
     public Money(int euros, int cents) {
-
-        if (cents > 99) {
-            euros = euros + cents / 100;
-            cents = cents % 100;
+        int totalCents = euros*100 + cents;
+        if (totalCents < 0) {
+            this.euros = 0;
+            this.cents = 0;
+        } else {
+            this.euros = totalCents/100;
+            this.cents = totalCents % 100;
         }
 
-        this.euros = euros;
-        this.cents = cents;
+        
     }
 
     public int euros() {
@@ -21,6 +23,26 @@ public class Money {
 
     public int cents() {
         return this.cents;
+    }
+
+    public Money plus(Money addition) {
+        Money newMoney = new Money(this.euros + addition.euros(), this.cents + addition.cents());
+        return newMoney;
+    }
+
+    public Money minus(Money decrease) {
+        Money newMoney = new Money(this.euros - decrease.euros(), this.cents - decrease.cents());
+        return newMoney;
+    }
+
+    public boolean lessThan(Money compared) {
+        if (this.euros > compared.euros()){
+            return false;
+        } else if (this.euros == compared.euros() && this.cents > compared.cents()){
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public String toString() {
