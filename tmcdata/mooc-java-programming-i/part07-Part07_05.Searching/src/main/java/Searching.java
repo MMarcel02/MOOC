@@ -1,6 +1,8 @@
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Searching {
 
@@ -31,6 +33,7 @@ public class Searching {
         System.out.println("");
 
         System.out.println("");
+        Collections.sort(books, Comparator.comparingInt(Book::getId));
         System.out.println("Seaching with binary search:");
         start = System.currentTimeMillis();
         int binarySearchId = binarySearch(books, idToSearchFor);
@@ -44,10 +47,41 @@ public class Searching {
     }
 
     public static int linearSearch(ArrayList<Book> books, int searchedId) {
+        for (int i = 0; i < books.size(); i++) {
+            if (books.get(i).getId() == searchedId) {
+                return i;
+            }
+        }
+        
         return -1;
     }
 
     public static int binarySearch(ArrayList<Book> books, long searchedId) {
+        
+        //Sort
+        //Find middle index
+        //Check if id at middle index matches our id
+
+        //if it does return the index
+        //if it is larger then reduce the searchable area 
+
+        int maxIndex = books.size() - 1;
+        int minIndex = 0;
+
+        while (maxIndex >= minIndex) {
+
+            int midPoint = minIndex + (maxIndex-minIndex)/2;
+            int midId = books.get(midPoint).getId();
+
+            if (midId == searchedId) {
+                return midPoint;
+            } else if (midId < searchedId) {
+                minIndex = midPoint + 1;
+            } else if (midId > searchedId) {
+                maxIndex = midPoint -1;
+            }    
+        }
+        
         return -1;
     }
 }
