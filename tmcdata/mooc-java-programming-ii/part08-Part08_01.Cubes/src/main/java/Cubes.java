@@ -5,6 +5,14 @@ public class Cubes {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("end")) {
+                break;    
+            }
+            double number = Integer.parseInt(input);
+            int cubed = (int)Math.pow(number, 3);
+            System.out.println(cubed);
+        }
     }
 }
