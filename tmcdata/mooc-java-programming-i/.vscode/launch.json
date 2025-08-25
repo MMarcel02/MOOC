@@ -1,0 +1,27 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "GuestListFromAFile",
+            "request": "launch",
+            "mainClass": "GuestListFromAFile",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "PrintingASpecifiedFile",
+            "request": "launch",
+            "mainClass": "PrintingASpecifiedFile",
+            "projectName": ""
+        },
+        {
+            "type": "java",
+            "name": "Run Current File",
+            "request": "launch",
+            "mainClass": "${fileBasenameNoExtension}",
+            "projectName": "${fileDirname}",
+            "cwd": "${fileDirname}"
+        }
+    ]
+}

@@ -26,6 +26,7 @@ public class GuestListFromAFile {
         System.out.println("Enter names, an empty line quits.");
         while (true) {
             String name = scanner.nextLine();
+            System.out.println(list);
             if (name.isEmpty()) {
                 break;
             }
